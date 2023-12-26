@@ -38,7 +38,7 @@ cd models
 
 如果要加入新的本地小模型，请使用以下步骤。
 
-1. 将模型加入 `data/p0_models.jsonl` （请参考里面已有模型的样式）。其中`id`是模型的路劲（在`models`目录下的相对路径）；并且加入其他对模型的描述（特别是任务类型相关的内容），帮助GPT判断该使用什么模型处理任务。
+1. 将模型加入 `data/p0_models.jsonl` （请参考里面已有模型的样式）。其中`id`是模型的路径（在`models`目录下的相对路径）；并且加入其他对模型的描述（特别是任务类型相关的内容），帮助GPT判断该使用什么模型处理任务。
 2. 查看`configs/config.custom.yaml`文件里面的 `tprompt: parse_task` 参数，确保新模型针对的任务类型（例如`text-classification`）在 Prompt 的任务类型列表里面。同时，确定prompt的`"args"`下面是否包括了相应参数。（总之要仔细检查一下prompt，确保GPT能够提取出相应的输入信息）
 3. 将模型按照 `id` 所述路径，放到 `models` 目录下。
 4. 在 `server.py` 中，在`load_pipes`方法，以及`models`方法中，加入模型处理方式。
